@@ -3,10 +3,11 @@ import Navbar from "./components/Navbar";
 import NewsBoard from "./components/NewsBoard";
 
 const App = () => {
+  const [category, setCategory] = useState("general");
   return (
     <div>
       <Navbar />
-      <NewsBoard />
+      <NewsBoard category={category} />
     </div>
   );
 };

@@ -1,13 +1,15 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import NewsItem from "./NewsItem";
+
+let key = "78ddb99fa1cf415b870b89a4d047adbe";
 
 const NewsBoard = () => {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    let url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${
-      import.meta.env.VITE_API_KEY
-    }`;
+    let url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${key}`;
+    console.log(url);
 
     fetch(url)
       .then((res) => res.json())
@@ -17,9 +19,14 @@ const NewsBoard = () => {
 
   return (
     <div>
-      <h2 className="text-center">
+      <h2 className="text-center my-4">
         Latest <span className="badge bg-danger">News</span>
       </h2>
+      <div className="d-flex item-center flex-wrap justify-content-center">
+        {articles.map((news, index) => {
+          return <NewsItem key={index} {...news} />;
+        })}
+      </div>
     </div>
   );
 };
