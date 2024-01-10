@@ -6,7 +6,7 @@ const App = () => {
   const [category, setCategory] = useState("general");
   return (
     <div>
-      <Navbar />
+      <Navbar setCategory={setCategory} />
       <NewsBoard category={category} />
     </div>
   );
